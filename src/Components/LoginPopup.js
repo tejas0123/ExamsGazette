@@ -10,9 +10,7 @@ function LoginPopup() {
   const navigate = useNavigate();
   
   async function submit(e){
-
     e.preventDefault();
-
     if(email == '' || password == ''){
       setErrorText("*Please fill all the fields!");
     }

@@ -28,7 +28,7 @@ function Navbar() {
     let sessionUser =  sessionStorage.getItem("sessionUser");
     if(sessionUser){
       sessionStorage.removeItem("sessionUser");
-      axios.get("http://localhost:4000/logout")
+      axios.get("http://localhost:4000/logout") //clear the cookie on the server
       .then(res =>{
         if(res.data.cleared){
           console.log("User logged out");
