@@ -16,7 +16,6 @@ function LoginPopup() {
     }
     else{
       try{
-
         setErrorText('');
         axios.defaults.withCredentials = true;
         axios.post("http://localhost:4000/login", {email, password})
@@ -42,6 +41,7 @@ function LoginPopup() {
     <StyledPopup>
       <h1>Sign in</h1>
       <p>{errorText}</p>
+      
       <form>
         <div className='formdiv'>
             <div className='formelements'>
@@ -60,8 +60,7 @@ function LoginPopup() {
       </form>
         
       <div className='newAccount'>
-        Do not have an account? <a href='/createaccount'>Create an account.</a>
-        
+        Do not have an account? <a href='/createaccount'>Create an account.</a> 
       </div>
     
     </StyledPopup>

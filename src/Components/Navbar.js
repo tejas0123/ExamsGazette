@@ -27,13 +27,12 @@ function Navbar() {
   {
     let sessionUser =  sessionStorage.getItem("sessionUser");
     if(sessionUser){
+      axios.defaults.withCredentials = true;
       sessionStorage.removeItem("sessionUser");
-      axios.get("http://localhost:4000/logout") //clear the cookie on the server
+      axios.get("http://localhost:4000/logout", {cookiename : "user_sid"}) //api call to clear the cookie on the server
       .then(res =>{
-        if(res.data.cleared){
-          console.log("User logged out");
-          navigate('/');
-        }
+       console.log(res);
+       navigate('/');
       })
     }
   }

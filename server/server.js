@@ -5,19 +5,20 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 const mongoose = require("mongoose");
 const app = express();
-app.use(express.json());
 const bcrypt = require('bcrypt');
-const { json, Navigate } = require("react-router");
 const saltRounds = 10;
 
+app.use(express.json());
 app.use(cors({
     origin: ["http://localhost:3000"],
     methods: ["GET", "POST"],
     credentials:true
 }));
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
 app.use(session({
     key: "user_sid",
     secret : "AuthenticationUsingSessionsAnsCookies",
@@ -127,9 +128,9 @@ app.get("/login", (req, res) =>{
 
 app.get("/logout", (req, res) =>{
     res.clearCookie("user_sid");
+    console.log("User logged out");
     return res.json({cleared : true});
 });
-
 
 app.listen(4000, () =>{
     console.log("server started in port 4000");
